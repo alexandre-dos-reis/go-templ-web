@@ -1,0 +1,30 @@
+version: "3"
+
+silent: true
+
+vars:
+  ASSETS_DIR: ./web/assets
+
+tasks:
+  install:
+    cmds:
+      - bun install
+      - go mod tidy
+
+  tailwind:
+    cmds:
+      - bunx tailwindcss -i {{.ASSETS_DIR}}/src/style.css -o {{.ASSETS_DIR}}/dist/style.css --watch
+
+  templ:
+    cmds:
+      - templ generate --watch
+
+  air:
+    cmds:
+      - air
+
+  dev:
+    deps:
+      - templ
+      - air
+      - tailwind
