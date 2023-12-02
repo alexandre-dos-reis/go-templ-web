@@ -1,0 +1,17 @@
+package pages
+
+import (
+	"github.com/alexandre-dos-reis/go-templ-web/templates/shared"
+	"github.com/alexandre-dos-reis/go-templ-web/templates/components"
+)
+
+templ Home() {
+	@shared.Page("Accueil") {
+		<h1>Page d'accueil</h1>
+		@components.Section("Qui suis-je ?") {
+			<p>
+				Content
+			</p>
+		}
+	}
+}
