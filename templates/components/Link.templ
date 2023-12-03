@@ -1,0 +1,15 @@
+package components
+
+import "strings"
+
+templ Link (href string) {
+	if strings.HasPrefix(href, "http") {
+		<a href={ templ.URL(href) } target="_blank" rel="noreferrer noopener">
+			{ children... }
+		</a>
+	} else {
+		<a href={ templ.URL(href) }>
+			{ children... }
+		</a>
+	}
+}

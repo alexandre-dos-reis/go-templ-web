@@ -3,11 +3,11 @@ tmp_dir = "tmp"
 
 [build]
 bin = "./tmp/main"
-cmd = "go run cmd/server/main.go"
+cmd = "templ generate && go build -o ./tmp/main cmd/server/main.go"
 delay = 1000
 exclude_dir = ["assets", "tmp", "vendor", "node_modules"]
 exclude_file = []
-# exclude_regex = [".*_templ.go"]
+exclude_regex = [".*_templ.go"]
 exclude_unchanged = false
 follow_symlink = false
 full_bin = ""
