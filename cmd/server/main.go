@@ -1,13 +1,16 @@
 package main
 
 import (
+	"net/http"
+
+	"github.com/alexandre-dos-reis/go-templ-web/internal"
 	"github.com/alexandre-dos-reis/go-templ-web/templates/pages"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"net/http"
 )
 
 func main() {
+	// TODO: Use Gin server
 	router := chi.NewRouter()
 
 	// middleware
@@ -29,6 +32,8 @@ func main() {
 	router.Get("/contact", func(w http.ResponseWriter, r *http.Request) {
 		pages.Contact().Render(r.Context(), w)
 	})
+
+	internal.ServeAssetsDir("web/assets/dist", router)
 
 	http.ListenAndServe(":8080", router)
 }
